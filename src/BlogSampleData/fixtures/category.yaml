@@ -1,0 +1,48 @@
+- name: Blog
+  url_key: blog
+  parent:
+  status: 1
+  meta_title: Magento 2 Blog
+  meta_keywords: magento blog, magento 2 blog,
+  meta_description: Magento 2 Blog
+
+- name: Fashion
+  url_key: fashion
+  parent: blog
+  status: 1
+
+- name: Fashionable Quotes
+  url_key: fashionable-quotes
+  parent: fashion
+  status: 1
+
+- name: Fashion Tips
+  url_key: fashion-tips
+  parent: fashion
+  status: 1
+
+- name: Gadgets
+  url_key: gadgets
+  parent: blog
+  status: 1
+
+- name: Home Stretch
+  url_key: home-stretch
+  parent: blog
+  status: 1
+
+- name: Newsroom
+  url_key: newsroom
+  parent: blog
+  status: 1
+
+- name: Corporate News
+  url_key: corporate-news
+  parent: newsroom
+  status: 1
+
+- name: Case Study
+  url_key: case-study
+  parent: newsroom
+  status: 1
+
