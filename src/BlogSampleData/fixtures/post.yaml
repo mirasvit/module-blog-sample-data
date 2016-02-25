@@ -1,12 +1,12 @@
 - name: 5 Perfect Gifts To Indulge Yourself With This Valentine’s Day!
   status: 2
   author_id: 1
-  tags: fashion, trends
+  tags: fashion,trends
 
 - name: 5 Kitchen Appliances for the Health Freak in you
   status: 2
   author_id: 1
-  tags: kitchen, heath
+  tags: kitchen,health
   is_pinned: 1
 
 - name: Olive Witch: A Memoir By Abeer Y. Hoque
@@ -16,13 +16,13 @@
 - name: Best Valentine’s Day Gifts for Him
   status: 2
   author_id: 1
-  tags: valintine, gifts
+  tags: valintine,gifts
   is_pinned: 1
 
 - name: Best Valentine’s Day Gifts for Her
   status: 2
   author_id: 1
-  tags:
+  tags: valintine,gifts
 
 - name: 5 gifts that you must gift to your BFF this Valentine’s Day
   status: 2
@@ -37,19 +37,19 @@
 - name: Shopo makes shopping social with its latest app update
   status: 2
   author_id: 1
-  tags:
+  tags: shopping, social
   is_pinned: 1
 
 - name: Celebrate Republic Day
   status: 2
   author_id: 1
-  tags:
+  tags: Republic Day
   is_pinned: 1
 
 - name: Editor’s Pick: Top 5 Watches To Watch Out For!
   status: 2
   author_id: 1
-  tags:
+  tags: watches
   is_pinned: 1
 
 - name: 60,000 Welcome Kits of Maggi sold out
@@ -70,22 +70,22 @@
 - name: Share your Dil Ki Baat this Diwali and win surprise gifts from Madhavan!
   status: 2
   author_id: 1
-  tags:
+  tags: gifts
 
 - name: Bigg Boss Trends: Frame That Outfit
   status: 2
   author_id: 1
-  tags:
+  tags: trends
 
 - name: Bigg Boss Trends: The Dapper Look
   status: 2
   author_id: 1
-  tags:
+  tags: tegnds
 
 - name: Shopo gets 1 million listings in 3 months, becomes preferred marketplace for small sellers, individuals
   status: 2
   author_id: 1
-  tags:
+  tags: trends
 
 - name: Five Designers You Will Love!
   status: 2
@@ -96,7 +96,7 @@
 - name: iPhone 6s Launching Today
   status: 2
   author_id: 1
-  tags:
+  tags: iphone
 
 - name: Coffee With Customers
   status: 2
@@ -113,7 +113,7 @@
 - name: Ecommerce sector powering India’s SME growth: Report by Snapdeal & KPMG
   status: 2
   author_id: 1
-  tags:
+  tags: ecommerce, shopping
 
 - name: Let’s Get Brewing
   status: 2
@@ -129,18 +129,18 @@
 - name: Shopo Introduces Online Social Shopping, Launches Peer to Peer Chat And Vernacular Content
   status: 2
   author_id: 1
-  tags:
+  tags: social
 
 - name: Aim to build business and share wealth through entrepreneurial success
   status: 2
   author_id: 1
-  tags:
+  tags: business
   is_pinned: 1
 
 - name: Best Cities To Travel Around The World
   status: 2
   author_id: 1
-  tags:
+  tags: travel
 
 - name: Making Mondays Awesome!
   status: 2
@@ -185,7 +185,7 @@
 - name: Six Personalized Gifts For This Rakhi
   status: 2
   author_id: 1
-  tags:
+  tags: gifts
 
 - name: Things to look out for during Onam celebrations
   status: 2
@@ -195,7 +195,7 @@
 - name: Best Gifts to Exchange This Onam
   status: 2
   author_id: 1
-  tags:
+  tags: gifts
 
 - name: Want to be the CEO? Run…Literally!
   status: 2
@@ -242,10 +242,10 @@
 - name: Meet BLU Mobile Phones!
   status: 2
   author_id: 1
-  tags:
+  tags: mobile,phone
 
 - name: Towards a Million Success Stories!!
   status: 2
   author_id: 1
-  tags:
+  tags: success
   is_pinned: 1

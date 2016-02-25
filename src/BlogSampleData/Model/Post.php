@@ -51,6 +51,10 @@ class Post
             $posts = $this->yamlParser->parse(file_get_contents($fileName));
 
             foreach ($posts as $post) {
+                if (isset($post['tags'])) {
+                    $post['tag_names'] = explode(',', $post['tags']);
+                }
+
                 $model = $this->postFactory->create();
                 $model->setData($post)
                     ->setContent($this->getContent())
