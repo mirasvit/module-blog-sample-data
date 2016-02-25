@@ -7,6 +7,7 @@ use Magento\Framework\App\ResourceConnection;
 use Symfony\Component\Yaml\Parser as YamlParser;
 use Mirasvit\Blog\Model\PostFactory;
 use Mirasvit\Blog\Model\CategoryFactory;
+use Mirasvit\Blog\Model\Config;
 
 class Post
 {
@@ -14,6 +15,7 @@ class Post
      * @param SampleDataContext  $sampleDataContext
      * @param PostFactory        $postFactory
      * @param CategoryFactory    $categoryFactory
+     * @param Config             $config
      * @param YamlParser         $yamlParser
      * @param ResourceConnection $resource
      */
@@ -21,12 +23,14 @@ class Post
         SampleDataContext $sampleDataContext,
         PostFactory $postFactory,
         CategoryFactory $categoryFactory,
+        Config $config,
         YamlParser $yamlParser,
         ResourceConnection $resource
     ) {
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
         $this->postFactory = $postFactory;
         $this->categoryFactory = $categoryFactory;
+        $this->config = $config;
         $this->yamlParser = $yamlParser;
         $this->resource = $resource;
     }
@@ -52,7 +56,20 @@ class Post
                     ->setContent($this->getContent())
                     ->setShortContent($this->getShortContent())
                     ->setCategoryIds($this->getRandomCategories())
+                    ->setCreatedAt(time() - rand(0, 365 * 24 * 60 * 60))
                     ->save();
+
+                $img = $this->fixtureManager->getFixture('Mirasvit_BlogSampleData::fixtures/media/' . rand(1, 15) . '.jpg');
+
+                try {
+                    $newImg = $model->getId() . '.jpg';
+                    copy($img, $this->config->getMediaPath() . '/' . $newImg);
+
+                    $model->setFeaturedImage($newImg)
+                        ->save();
+                } catch (\Exception $e) {
+                    echo $e;
+                }
             }
         }
     }
@@ -82,8 +99,8 @@ class Post
         $faker = \Faker\Factory::create();
 
         $text = '';
-        for ($i = 0; $i < rand(3, 20); $i++) {
-            $text .= '<p>' . $faker->realText(rand(500, 2000)) . '</p>';
+        for ($i = 0; $i < rand(2, 6); $i++) {
+            $text .= '<p>' . $faker->realText(rand(100, 1000)) . '</p>';
         }
 
         return $text;
@@ -96,6 +113,7 @@ class Post
     {
         $faker = \Faker\Factory::create();
 
-        return $faker->realText(rand(100, 500));
+        return '<p>' . $faker->realText(rand(200, 400)) . '</p>'
+        . '<p>' . $faker->realText(rand(200, 400)) . '</p>';
     }
 }

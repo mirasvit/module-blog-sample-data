@@ -7,6 +7,7 @@
   status: 2
   author_id: 1
   tags: kitchen, heath
+  is_pinned: 1
 
 - name: Olive Witch: A Memoir By Abeer Y. Hoque
   status: 2
@@ -16,6 +17,7 @@
   status: 2
   author_id: 1
   tags: valintine, gifts
+  is_pinned: 1
 
 - name: Best Valentine’s Day Gifts for Her
   status: 2
@@ -36,16 +38,19 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Celebrate Republic Day
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Editor’s Pick: Top 5 Watches To Watch Out For!
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: 60,000 Welcome Kits of Maggi sold out
   status: 2
@@ -86,6 +91,7 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: iPhone 6s Launching Today
   status: 2
@@ -96,11 +102,13 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Where Does Helpfulness End?
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Ecommerce sector powering India’s SME growth: Report by Snapdeal & KPMG
   status: 2
@@ -116,6 +124,7 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Shopo Introduces Online Social Shopping, Launches Peer to Peer Chat And Vernacular Content
   status: 2
@@ -126,6 +135,7 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Best Cities To Travel Around The World
   status: 2
@@ -201,11 +211,13 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: A Weekend is all it takes to spruce up your homes
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
 
 - name: Style The World, Be A ShopoAngel!
   status: 2
@@ -236,3 +248,4 @@
   status: 2
   author_id: 1
   tags:
+  is_pinned: 1
