@@ -1,4 +1,4 @@
-- name: Blog
+- name: Magento 2 Blog
   url_key: blog
   parent:
   status: 1
