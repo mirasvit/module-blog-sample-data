@@ -63,9 +63,13 @@ class Post
                     ->setCreatedAt(time() - rand(0, 365 * 24 * 60 * 60))
                     ->save();
 
-                $img = $this->fixtureManager->getFixture('Mirasvit_BlogSampleData::fixtures/media/' . rand(1, 15) . '.jpg');
+                $img = $this->fixtureManager->getFixture(
+                    'Mirasvit_BlogSampleData::fixtures/media/' . rand(1, 15) . '.jpg'
+                );
 
                 try {
+                    mkdir($this->config->getMediaPath(), 777, true);
+
                     $newImg = $model->getId() . '.jpg';
                     copy($img, $this->config->getMediaPath() . '/' . $newImg);
 
