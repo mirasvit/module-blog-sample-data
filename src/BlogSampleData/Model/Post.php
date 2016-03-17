@@ -68,7 +68,7 @@ class Post
                 );
 
                 try {
-                    mkdir($this->config->getMediaPath(), 777, true);
+                    @mkdir($this->config->getMediaPath(), 777, true);
 
                     $newImg = $model->getId() . '.jpg';
                     copy($img, $this->config->getMediaPath() . '/' . $newImg);
