@@ -7,6 +7,7 @@ use Magento\Framework\App\ResourceConnection;
 use Symfony\Component\Yaml\Parser as YamlParser;
 use Mirasvit\Blog\Model\PostFactory;
 use Mirasvit\Blog\Model\CategoryFactory;
+use Magento\Catalog\Model\ProductFactory;
 use Mirasvit\Blog\Model\Config;
 
 class Post
@@ -15,6 +16,7 @@ class Post
      * @param SampleDataContext  $sampleDataContext
      * @param PostFactory        $postFactory
      * @param CategoryFactory    $categoryFactory
+     * @param ProductFactory     $productFactory
      * @param Config             $config
      * @param YamlParser         $yamlParser
      * @param ResourceConnection $resource
@@ -23,6 +25,7 @@ class Post
         SampleDataContext $sampleDataContext,
         PostFactory $postFactory,
         CategoryFactory $categoryFactory,
+        ProductFactory $productFactory,
         Config $config,
         YamlParser $yamlParser,
         ResourceConnection $resource
@@ -30,6 +33,7 @@ class Post
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
         $this->postFactory = $postFactory;
         $this->categoryFactory = $categoryFactory;
+        $this->productFactory = $productFactory;
         $this->config = $config;
         $this->yamlParser = $yamlParser;
         $this->resource = $resource;
@@ -60,6 +64,7 @@ class Post
                     ->setContent($this->getContent())
                     ->setShortContent($this->getShortContent())
                     ->setCategoryIds($this->getRandomCategories())
+                    ->setProductIds($this->getRandomProducts())
                     ->setCreatedAt(time() - rand(0, 365 * 24 * 60 * 60))
                     ->save();
 
@@ -91,6 +96,24 @@ class Post
         $collection = $this->categoryFactory->create()->getCollection();
         $collection->getSelect()->orderRand()
             ->limit(rand(1, 3));
+
+        foreach ($collection as $item) {
+            $result[] = $item->getId();
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRandomProducts()
+    {
+        $result = [];
+        $collection = $this->productFactory->create()->getCollection()
+            ->addAttributeToFilter('visibility', 4);
+        $collection->getSelect()->orderRand()
+            ->limit(rand(10, 30));
 
         foreach ($collection as $item) {
             $result[] = $item->getId();
