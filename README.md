@@ -2,6 +2,14 @@
 
 # Changelog
 
+## 1.0.3
+*(2016-03-25)*
+
+#### Improve
+* Post to products relation
+
+---
+
 ## 1.0.2
 *(2016-03-17)*
 
