@@ -4,26 +4,24 @@ namespace Mirasvit\BlogSampleData\Model;
 
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
 use Magento\Framework\App\ResourceConnection;
-use Symfony\Component\Yaml\Parser as YamlParser;
 use Mirasvit\Blog\Model\CategoryFactory;
+use Mirasvit\Core\Service\YamlService;
+use RomaricDrigon\MetaYaml\MetaYaml;
 
 class Category
 {
     /**
      * @param SampleDataContext  $sampleDataContext
      * @param CategoryFactory    $categoryFactory
-     * @param YamlParser         $yamlParser
      * @param ResourceConnection $resource
      */
     public function __construct(
         SampleDataContext $sampleDataContext,
         CategoryFactory $categoryFactory,
-        YamlParser $yamlParser,
         ResourceConnection $resource
     ) {
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
         $this->categoryFactory = $categoryFactory;
-        $this->yamlParser = $yamlParser;
         $this->resource = $resource;
     }
 
@@ -40,7 +38,7 @@ class Category
         foreach ($fixtures as $fileName) {
             $fileName = $this->fixtureManager->getFixture($fileName);
 
-            $categories = $this->yamlParser->parse(file_get_contents($fileName));
+            $categories = YamlService::parse($fileName);
 
             foreach ($categories as $category) {
                 $parentId = $this->getIdByUrlKey($category['parent']);

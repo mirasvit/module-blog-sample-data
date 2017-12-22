@@ -4,11 +4,12 @@ namespace Mirasvit\BlogSampleData\Model;
 
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
 use Magento\Framework\App\ResourceConnection;
-use Symfony\Component\Yaml\Parser as YamlParser;
 use Mirasvit\Blog\Model\PostFactory;
 use Mirasvit\Blog\Model\CategoryFactory;
 use Magento\Catalog\Model\ProductFactory;
 use Mirasvit\Blog\Model\Config;
+use Mirasvit\Core\Service\YamlService;
+use RomaricDrigon\MetaYaml\MetaYaml;
 
 class Post
 {
@@ -18,7 +19,6 @@ class Post
      * @param CategoryFactory    $categoryFactory
      * @param ProductFactory     $productFactory
      * @param Config             $config
-     * @param YamlParser         $yamlParser
      * @param ResourceConnection $resource
      */
     public function __construct(
@@ -27,7 +27,6 @@ class Post
         CategoryFactory $categoryFactory,
         ProductFactory $productFactory,
         Config $config,
-        YamlParser $yamlParser,
         ResourceConnection $resource
     ) {
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
@@ -35,7 +34,6 @@ class Post
         $this->categoryFactory = $categoryFactory;
         $this->productFactory = $productFactory;
         $this->config = $config;
-        $this->yamlParser = $yamlParser;
         $this->resource = $resource;
     }
 
@@ -52,7 +50,7 @@ class Post
         foreach ($fixtures as $fileName) {
             $fileName = $this->fixtureManager->getFixture($fileName);
 
-            $posts = $this->yamlParser->parse(file_get_contents($fileName));
+            $posts = YamlService::parse($fileName);
 
             foreach ($posts as $post) {
                 if (isset($post['tags'])) {
