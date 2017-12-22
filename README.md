@@ -20,6 +20,7 @@
 *(2016-03-17)* 
 
 * stable version
+
 ------
 # Submodule mirasvit/module-sample-data
 
