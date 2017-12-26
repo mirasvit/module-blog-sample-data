@@ -9,7 +9,7 @@
   tags: kitchen,health
   is_pinned: 1
 
-- name: Olive Witch: A Memoir By Abeer Y. Hoque
+- name: "Olive Witch: A Memoir By Abeer Y. Hoque"
   status: 2
   author_id: 1
 
@@ -46,7 +46,7 @@
   tags: Republic Day
   is_pinned: 1
 
-- name: Editor’s Pick: Top 5 Watches To Watch Out For!
+- name: "Editor’s Pick: Top 5 Watches To Watch Out For!"
   status: 2
   author_id: 1
   tags: watches
@@ -62,7 +62,7 @@
   author_id: 1
   tags:
 
-- name: Bigg Boss Fashion Trends: Dress Up Your Hair
+- name: "Bigg Boss Fashion Trends: Dress Up Your Hair"
   status: 2
   author_id: 1
   tags:
@@ -72,12 +72,12 @@
   author_id: 1
   tags: gifts
 
-- name: Bigg Boss Trends: Frame That Outfit
+- name: "Bigg Boss Trends: Frame That Outfit"
   status: 2
   author_id: 1
   tags: trends
 
-- name: Bigg Boss Trends: The Dapper Look
+- name: "Bigg Boss Trends: The Dapper Look"
   status: 2
   author_id: 1
   tags: tegnds
@@ -110,7 +110,7 @@
   tags:
   is_pinned: 1
 
-- name: Ecommerce sector powering India’s SME growth: Report by Snapdeal & KPMG
+- name: "Ecommerce sector powering India’s SME growth: Report by Snapdeal & KPMG"
   status: 2
   author_id: 1
   tags: ecommerce, shopping
@@ -224,7 +224,7 @@
   author_id: 1
   tags:
 
-- name: Ethical Hacking : A licence to hacking
+- name: "Ethical Hacking : A license to hacking"
   status: 2
   author_id: 1
   tags:
