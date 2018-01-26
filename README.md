@@ -24,6 +24,12 @@
 ------
 # Submodule mirasvit/module-sample-data
 
+## 1.1.6
+*(2018-01-24)
+
+#### Improvements
+* Added support for CLI Commands of cleaning and reinstalling sample data
+
 ## 1.1.0
 *(2017-12-04)*
 
