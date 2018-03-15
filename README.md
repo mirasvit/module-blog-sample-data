@@ -23,80 +23,41 @@
 
 ------
 # Submodule mirasvit/module-sample-data
+## Basic Usage
 
-## 1.1.6
-*(2018-01-24)
+### Service\DateService
+Позволяет двигать текущую дату, при этом все insert/update запросы будут идти с новой датой.
 
-#### Improvements
-* Added support for CLI Commands of cleaning and reinstalling sample data
+```php
+/** @var \Mirasvit\SampleData\Service\DateService $this->dateService */
 
-## 1.1.0
-*(2017-12-04)*
+$this->dateService->toPast(6 * 30); #уходим на 6 месяцев назад
+for ($i = 0; $i < 100; $i++) {
+    this->sampleDataService->order();
+    
+    $this->dateService->toFeature(2); #уходим на два дня вперед
+}
+$this->dateService->reset(); #востанавливаем реальные значения
+```
 
-#### Improvements
-* Refactoring
+### Service\DatabaseService
+Набор методов для работы с БД
 
----
+```php
+/** @var \Mirasvit\SampleData\Service\DatabaseService $this->databaseService */
 
-## 1.0.6
-*(2017-10-09)* 
+$this->databaseService->truncateTable('customer_entity'); #очищает таблицу с учетом foregin keys и сбрасывает increment id
+```
 
-* removed composer requiremenets for magento
+### Service\FixtureService
+Набор методов для работы с fixtures
 
-## 1.0.5
-*(2017-09-08)*
+```php
+/** @var \Mirasvit\SampleData\Service\FixtureService $this->fixtureService */
 
-#### Fixed
-* shipping method
-
----
-
-## 1.0.4
-*(2017-09-08)*
-
-#### Fixed
-* credit product creation
-
----
-
-## 1.0.3
-*(2017-09-01)*
-
-#### Fixed
-* shipping method for orders
-
----
-
-## 1.0.2
-*(2017-01-19)*
-
-#### Fixed
-* Small changes
-
----
-
-## 1.0.1
-*(2016-06-24)*
-
-* Update magento requirements
-
-## 1.0.0-alpha8
-*(2016-03-01)*
-
-#### Fixed
-* php 7 error
-
----
-
-## 1.0.0-alpha7
-*(2016-02-17)*
-
-#### Fixed
-* Small updates for Customers and Orders
-* Changed seed to null for generate random emails
-* Changed seed to null for generate random emails
-
----
+$content = $this->fixtureService->loadFixture('Mirasvit_Affiliate::fixture/text.html');
+$data = $this->fixtureService->loadYamlFixture('Mirasvit_Affiliate::fixture/account.yaml');
+```
 
 ------
 # Submodule mirasvit/module-blog
