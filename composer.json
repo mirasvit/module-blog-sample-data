@@ -8,7 +8,7 @@
     "magento/framework": "100.0.*|100.1.*|100.2.*|101.0.*",
     "fzaninotto/faker": "*",
     "mirasvit/module-core": ">=1.2.46",
-    "mirasvit/module-sample-data": "*",
+    "mirasvit/module-sample-data": "^1.1",
     "mirasvit/module-blog": "*"
   },
   "type": "magento2-module",
