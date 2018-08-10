@@ -60,7 +60,7 @@ $data = $this->fixtureService->loadYamlFixture('Mirasvit_Affiliate::fixture/acco
 ```
 
 ------
-# Submodule mirasvit/module-blog
+# Submodule 
 # Blog MX | Magento 2 Blog Module by [Mirasvit](https://mirasvit.com/)
 
 FREE, fully featured, powerful Blog solution for your online store!
