@@ -122,7 +122,7 @@ class Post
         $collection = $this->productFactory->create()->getCollection()
             ->addAttributeToFilter('visibility', 4);
         $collection->getSelect()->orderRand()
-            ->limit(rand(10, 30));
+            ->limit(rand(4, 8));
 
         foreach ($collection as $item) {
             $result[] = $item->getId();
