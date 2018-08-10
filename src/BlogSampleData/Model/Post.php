@@ -55,6 +55,7 @@ class Post
                 $tagIds = [];
                 if (isset($post['tags'])) {
                     $tagNames = explode(',', $post['tags']);
+                    $tagNames = array_filter($tagNames);
                     foreach ($tagNames as $tagName) {
                         $tag = $this->tagRepository->create()
                             ->setName($tagName);
