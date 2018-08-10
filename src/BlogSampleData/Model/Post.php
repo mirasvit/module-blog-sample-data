@@ -4,6 +4,9 @@ namespace Mirasvit\BlogSampleData\Model;
 
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
 use Magento\Framework\App\ResourceConnection;
+use Mirasvit\Blog\Api\Repository\CategoryRepositoryInterface;
+use Mirasvit\Blog\Api\Repository\PostRepositoryInterface;
+use Mirasvit\Blog\Api\Repository\TagRepositoryInterface;
 use Mirasvit\Blog\Model\PostFactory;
 use Mirasvit\Blog\Model\CategoryFactory;
 use Magento\Catalog\Model\ProductFactory;
@@ -13,25 +16,19 @@ use RomaricDrigon\MetaYaml\MetaYaml;
 
 class Post
 {
-    /**
-     * @param SampleDataContext  $sampleDataContext
-     * @param PostFactory        $postFactory
-     * @param CategoryFactory    $categoryFactory
-     * @param ProductFactory     $productFactory
-     * @param Config             $config
-     * @param ResourceConnection $resource
-     */
     public function __construct(
+        PostRepositoryInterface $postRepository,
+        CategoryRepositoryInterface $categoryRepository,
+        TagRepositoryInterface $tagRepository,
         SampleDataContext $sampleDataContext,
-        PostFactory $postFactory,
-        CategoryFactory $categoryFactory,
         ProductFactory $productFactory,
         Config $config,
         ResourceConnection $resource
     ) {
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
-        $this->postFactory = $postFactory;
-        $this->categoryFactory = $categoryFactory;
+        $this->postRepository = $postRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->tagRepository = $tagRepository;
         $this->productFactory = $productFactory;
         $this->config = $config;
         $this->resource = $resource;
@@ -53,31 +50,44 @@ class Post
             $posts = YamlService::parse($fileName);
 
             foreach ($posts as $post) {
+                echo 'Saving a post' . PHP_EOL;
+
+                $tagIds = [];
                 if (isset($post['tags'])) {
-                    $post['tag_names'] = explode(',', $post['tags']);
+                    $tagNames = explode(',', $post['tags']);
+                    foreach ($tagNames as $tagName) {
+                        $tag = $this->tagRepository->create()
+                            ->setName($tagName);
+                        $tag = $this->tagRepository->ensure($tag);
+
+                        $tagIds[] = $tag->getId();
+                    }
                 }
 
-                $model = $this->postFactory->create();
+                $model = $this->postRepository->create();
                 $model->setData($post)
                     ->setContent($this->getContent())
                     ->setShortContent($this->getShortContent())
                     ->setCategoryIds($this->getRandomCategories())
+                    ->setTagIds($tagIds)
                     ->setProductIds($this->getRandomProducts())
-                    ->setCreatedAt(time() - rand(0, 365 * 24 * 60 * 60))
-                    ->save();
+                    ->setCreatedAt(time() - rand(0, 365 * 24 * 60 * 60));
+
+                $this->postRepository->save($model);
 
                 $img = $this->fixtureManager->getFixture(
                     'Mirasvit_BlogSampleData::fixtures/media/' . rand(1, 15) . '.jpg'
                 );
 
                 try {
-                    @mkdir($this->config->getMediaPath(), 777, true);
+                    @mkdir($this->config->getMediaPath(''), 777, true);
 
                     $newImg = $model->getId() . '.jpg';
-                    copy($img, $this->config->getMediaPath() . '/' . $newImg);
+                    copy($img, $this->config->getMediaPath('') . '/' . $newImg);
 
-                    $model->setFeaturedImage($newImg)
-                        ->save();
+                    $model->setFeaturedImage($newImg);
+
+                    $this->postRepository->save($model);
                 } catch (\Exception $e) {
                     echo $e;
                 }
@@ -91,7 +101,7 @@ class Post
     protected function getRandomCategories()
     {
         $result = [];
-        $collection = $this->categoryFactory->create()->getCollection();
+        $collection = $this->categoryRepository->getCollection();
         $collection->getSelect()->orderRand()
             ->limit(rand(1, 3));
 
@@ -143,6 +153,6 @@ class Post
         $faker = \Faker\Factory::create();
 
         return '<p>' . $faker->realText(rand(200, 400)) . '</p>'
-        . '<p>' . $faker->realText(rand(200, 400)) . '</p>';
+            . '<p>' . $faker->realText(rand(200, 400)) . '</p>';
     }
 }
