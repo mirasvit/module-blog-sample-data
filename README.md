@@ -81,6 +81,7 @@ Magento 2 Blog MX allows you to open a blog and engage more and more customers t
 
 ## 3. Key Features
 
+* Preview mode
 * SEO friendly posts and URLs
 * Multi-level categories
 * Ability to preview post before publication or before save changes
@@ -93,8 +94,6 @@ Magento 2 Blog MX allows you to open a blog and engage more and more customers t
 
 [more information](https://mirasvit.com/magento-2-extensions/blog.html)
 
-## 4. All Features
-
-## 5. Sample Data
+## 4. Sample Data
 [https://github.com/mirasvit/module-blog-sample-data](https://github.com/mirasvit/module-blog-sample-data)
 
