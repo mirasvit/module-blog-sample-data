@@ -22,44 +22,6 @@
 * stable version
 
 ------
-# Submodule mirasvit/module-sample-data
-## Basic Usage
-
-### Service\DateService
-Позволяет двигать текущую дату, при этом все insert/update запросы будут идти с новой датой.
-
-```php
-/** @var \Mirasvit\SampleData\Service\DateService $this->dateService */
-
-$this->dateService->toPast(6 * 30); #уходим на 6 месяцев назад
-for ($i = 0; $i < 100; $i++) {
-    this->sampleDataService->order();
-    
-    $this->dateService->toFeature(2); #уходим на два дня вперед
-}
-$this->dateService->reset(); #востанавливаем реальные значения
-```
-
-### Service\DatabaseService
-Набор методов для работы с БД
-
-```php
-/** @var \Mirasvit\SampleData\Service\DatabaseService $this->databaseService */
-
-$this->databaseService->truncateTable('customer_entity'); #очищает таблицу с учетом foregin keys и сбрасывает increment id
-```
-
-### Service\FixtureService
-Набор методов для работы с fixtures
-
-```php
-/** @var \Mirasvit\SampleData\Service\FixtureService $this->fixtureService */
-
-$content = $this->fixtureService->loadFixture('Mirasvit_Affiliate::fixture/text.html');
-$data = $this->fixtureService->loadYamlFixture('Mirasvit_Affiliate::fixture/account.yaml');
-```
-
-------
 # Submodule mirasvit/module-blog
 # Blog MX | Magento 2 Blog Module by [Mirasvit](https://mirasvit.com/)
 
