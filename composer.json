@@ -3,7 +3,6 @@
   "description": "Blog Sample Data",
   "require": {
     "mirasvit/module-core": "dev-master|>=1.2.46",
-    "mirasvit/module-sample-data": "^1.1",
     "mirasvit/module-blog": "*"
   },
   "type": "magento2-module",
