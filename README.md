@@ -22,7 +22,7 @@
 * stable version
 
 ------
-# Sub-module mirasvit/module-blog
+# Submodule mirasvit/module-blog
 # Blog MX | Magento 2 Blog Module by [Mirasvit](https://mirasvit.com/)
 
 FREE, fully featured, powerful Blog solution for your online store!
