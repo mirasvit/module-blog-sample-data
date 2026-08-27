@@ -5,24 +5,32 @@ namespace Mirasvit\BlogSampleData\Model;
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
 use Magento\Framework\App\ResourceConnection;
 use Mirasvit\Blog\Model\CategoryFactory;
-use Mirasvit\Core\Service\YamlService;
+use Magento\Framework\Serialize\Serializer\Json;
 use RomaricDrigon\MetaYaml\MetaYaml;
 
 class Category
 {
     /**
+     * @var Json
+     */
+    private $json;
+
+    /**
      * @param SampleDataContext  $sampleDataContext
      * @param CategoryFactory    $categoryFactory
      * @param ResourceConnection $resource
+     * @param Json               $json
      */
     public function __construct(
         SampleDataContext $sampleDataContext,
         CategoryFactory $categoryFactory,
-        ResourceConnection $resource
+        ResourceConnection $resource,
+        Json $json
     ) {
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
         $this->categoryFactory = $categoryFactory;
         $this->resource = $resource;
+        $this->json = $json;
     }
 
     /**
@@ -38,7 +46,7 @@ class Category
         foreach ($fixtures as $fileName) {
             $fileName = $this->fixtureManager->getFixture($fileName);
 
-            $categories = YamlService::parse($fileName);
+            $categories = $this->json->unserialize((string)file_get_contents($fileName));
 
             foreach ($categories as $category) {
                 $parentId = $this->getIdByUrlKey($category['parent']);

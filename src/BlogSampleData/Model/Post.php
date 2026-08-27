@@ -11,11 +11,16 @@ use Mirasvit\Blog\Model\PostFactory;
 use Mirasvit\Blog\Model\CategoryFactory;
 use Magento\Catalog\Model\ProductFactory;
 use Mirasvit\Blog\Model\Config;
-use Mirasvit\Core\Service\YamlService;
+use Magento\Framework\Serialize\Serializer\Json;
 use RomaricDrigon\MetaYaml\MetaYaml;
 
 class Post
 {
+    /**
+     * @var Json
+     */
+    private $json;
+
     public function __construct(
         PostRepositoryInterface $postRepository,
         CategoryRepositoryInterface $categoryRepository,
@@ -23,7 +28,8 @@ class Post
         SampleDataContext $sampleDataContext,
         ProductFactory $productFactory,
         Config $config,
-        ResourceConnection $resource
+        ResourceConnection $resource,
+        Json $json
     ) {
         $this->fixtureManager = $sampleDataContext->getFixtureManager();
         $this->postRepository = $postRepository;
@@ -32,6 +38,7 @@ class Post
         $this->productFactory = $productFactory;
         $this->config = $config;
         $this->resource = $resource;
+        $this->json = $json;
     }
 
     /**
@@ -47,7 +54,7 @@ class Post
         foreach ($fixtures as $fileName) {
             $fileName = $this->fixtureManager->getFixture($fileName);
 
-            $posts = YamlService::parse($fileName);
+            $posts = $this->json->unserialize((string)file_get_contents($fileName));
 
             foreach ($posts as $post) {
                 echo 'Saving a post' . PHP_EOL;

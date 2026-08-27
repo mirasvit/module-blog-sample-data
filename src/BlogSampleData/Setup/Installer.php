@@ -34,8 +34,8 @@ class Installer implements Setup\SampleData\InstallerInterface
     public function install()
     {
         try {
-            $this->category->install(['Mirasvit_BlogSampleData::fixtures/category.yaml']);
-            $this->post->install(['Mirasvit_BlogSampleData::fixtures/post.yaml']);
+            $this->category->install(['Mirasvit_BlogSampleData::fixtures/category.json']);
+            $this->post->install(['Mirasvit_BlogSampleData::fixtures/post.json']);
         } catch (\Exception $e) {
             echo $e;
         }
