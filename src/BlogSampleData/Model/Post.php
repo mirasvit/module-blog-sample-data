@@ -11,7 +11,7 @@ use Mirasvit\Blog\Model\PostFactory;
 use Mirasvit\Blog\Model\CategoryFactory;
 use Magento\Catalog\Model\ProductFactory;
 use Mirasvit\Blog\Model\Config;
-use Mirasvit\Core\Service\YamlService;
+use Symfony\Component\Yaml\Yaml;
 use RomaricDrigon\MetaYaml\MetaYaml;
 
 class Post
@@ -47,7 +47,7 @@ class Post
         foreach ($fixtures as $fileName) {
             $fileName = $this->fixtureManager->getFixture($fileName);
 
-            $posts = YamlService::parse($fileName);
+            $posts = Yaml::parseFile($fileName);
 
             foreach ($posts as $post) {
                 echo 'Saving a post' . PHP_EOL;
